@@ -7,7 +7,11 @@
   <strong>Type:</strong>
   <%= @post.post_type %>
 </p>
-
+<% if @image %>
+<%= image_tag @post.image.url %>
+<% else %>
+  
+<% end %>
 <p>
   <strong>Description:</strong>
   <%= @post.description %>

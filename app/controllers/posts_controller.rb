@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @image = @post.image.present?
   end
 
   # GET /posts/new
@@ -69,6 +70,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :post_type, :description)
+      params.require(:post).permit(:title, :post_type,:image, :description)
     end
 end

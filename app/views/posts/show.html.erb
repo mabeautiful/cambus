@@ -1,21 +1,56 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
+    
+    <p>
+      <strong>Type:</strong>
+      <%= @post.post_type %>
+    </p>
+    <% if @image %>
+    <% else %>
+      
+    <% end %>
+    
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+         <div class="item active">
+            <%= image_tag @post.image.url %>
+          </div>
+        <% @post.photos.each do |photo| %>
+          <div class="item">
+            <%= image_tag photo.image.url %>
+          </div>
+        <% end %>
+      </div>
+    
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <p>
+      <strong>Description:</strong>
+      <%= @post.description %>
+    </p>
+    
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Back', posts_path %>
 
-<p>
-  <strong>Type:</strong>
-  <%= @post.post_type %>
-</p>
-<% if @image %>
-<%= image_tag @post.image.url %>
-<% else %>
-  
-<% end %>
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  </div>
+</div>

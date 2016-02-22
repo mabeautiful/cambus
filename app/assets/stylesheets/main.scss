@@ -4,3 +4,8 @@ $navbar-border-radius: 0;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.container-min{
+    max-width: 360px;
+    margin: auto;
+}
+

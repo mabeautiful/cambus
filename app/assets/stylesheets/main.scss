@@ -1,6 +1,7 @@
 $navbar-default-bg: #f55911;
 $navbar-default-link-color: #fff;
 $navbar-border-radius: 0;
+$btn-border-radius-base: 2px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -8,4 +9,50 @@ $navbar-border-radius: 0;
     max-width: 360px;
     margin: auto;
 }
+.container-post{
+	max-width: 640px;
+	margin: auto;
+}
 
+/*Post index page*/
+.home-container{
+	.img-container{
+		height: 200px;
+		padding: 10px;
+		.img-responsive{
+			max-width: 100%;
+			display: block;
+			margin: auto;
+		}
+	}
+	.post-box{
+		border: 1px solid #ccc;
+	}
+	.post-navigate{
+		text-align: center;
+		.btn{
+			margin: 0 3px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}	
+}
+
+/* Show post */
+.bx-wrapper{
+	margin: 0 auto 20px;
+}
+.show-description{
+	padding: 80px 0 0;
+}
+.remove_fields{
+	color: #d9534f;
+	&:hover{
+		text-decoration: none;
+		color: #961512;
+	}
+}
+/* General */
+textarea{
+	min-height: 200px;
+}

@@ -12,7 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
+//= require bxslider
 //= require cocoon
 //= require turbolinks
 //= require_tree .
+$(function(){
+	$('.bxslider').bxSlider({
+		pagerCustom: '#bx-pager'
+	});
+});

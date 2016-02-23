@@ -1,41 +1,51 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="container-post">
+  <%= form_for(@post) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :post_type %><br>
-    <%= f.text_field :post_type %>
-  </div>
-  <div class="form-control">
-    <%= f.file_field :image %>
-  </div>
-  
-  
-    <%= f.fields_for :photos do |photo| %>
-      <%= render 'photo_fields', f: photo %>
+        <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add name', f, :photos %>
+
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
-  
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <select name="contract" id="" class="form-control">
+        <option value="2">Hello</option>
+        <option value="2">Hello</option>
+        <option value="2">Hello</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <%= f.label :post_type %><br>
+      <%= f.text_field :post_type, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, "Featured image" %>
+      <div class="form-control">
+        
+        <%= f.file_field :image %>
+      </div>
+    </div> 
+      <%= f.fields_for :photos do |photo| %>
+        <%= render 'photo_fields', f: photo %>
+      <% end %>
+      <div class="links form-group">
+        <%= link_to_add_association ' add images', f, :photos, class: "fa fa-picture-o" %>
+      </div>
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %> 
+</div>

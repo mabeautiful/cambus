@@ -16,16 +16,30 @@
       <%= f.label :title %><br>
       <%= f.text_field :title, class: "form-control" %>
     </div>
-    <div class="form-group">
-      <select name="contract" id="" class="form-control">
-        <option value="2">Hello</option>
-        <option value="2">Hello</option>
-        <option value="2">Hello</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <%= f.label :post_type %><br>
-      <%= f.text_field :post_type, class: "form-control" %>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+        <%= f.label :post_type, "Type" %>
+         <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price %>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">$</span>
+            <%= f.text_field :price, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :location_id, "Location" %>
+          <%=f. select :location_id, options_from_collection_for_select(Location.all, :id, :location_name, @post.location_id), {}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :category_id, "Category" %>
+          <%=f. select :category_id, options_from_collection_for_select(Category.all, :id, :category_name, @post.category_id), {}, class: "form-control" %>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <%= f.label :image, "Featured image" %>

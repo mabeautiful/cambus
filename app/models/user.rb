@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
+  has_one :profile
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,5 +22,11 @@ class User < ActiveRecord::Base
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  after_create :build_profile
+
+  def build_profile
+    Profile.create(user: self) # Associations must be defined correctly for this syntax, avoids using ID's directly.
   end
 end

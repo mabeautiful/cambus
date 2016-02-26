@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225085835) do
+ActiveRecord::Schema.define(version: 20160226075424) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "category_name"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20160225085835) do
     t.float    "price"
     t.integer  "category_id"
     t.integer  "location_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "phone"
+    t.string  "email"
+    t.text    "address"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

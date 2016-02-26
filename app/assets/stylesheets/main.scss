@@ -60,6 +60,19 @@ $btn-border-radius-base: 2px;
 		color: #961512;
 	}
 }
+
+
+/* User profile */
+.user-profile{
+	border: 1px solid #ccc;
+	padding: 10px;
+	.profile-img{
+		i{
+			font-size: 100px;
+		}
+	}
+}
+
 /* General */
 body{
 	background-color: #eeeeee;
@@ -67,3 +80,4 @@ body{
 textarea{
 	min-height: 200px;
 }
+

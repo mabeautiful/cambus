@@ -1,0 +1,30 @@
+<div class="container-min">
+	<h2>Edit profile</h2>
+
+	<%= form_for(@profile) do |f| %>
+		<div class="form-group">
+			<%= f.label :first_name, "First Name" %>
+			<%= f.text_field :first_name, placeholder: "First name", class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :last_name, "Last Name" %>
+			<%= f.text_field :last_name, placeholder: "Last name", class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :phone, "Phone Number" %>
+			<%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :email, "Email Address" %>
+			<%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :address, "Address" %>
+			<%= f.text_area :address, placeholder: "Address", class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.submit "Update Your profile", class: "btn btn-lg btn-block btn-primary" %>
+		</div>
+	<% end %>
+</div>

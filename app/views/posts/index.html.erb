@@ -12,12 +12,15 @@
 					<h4><%= post.title %></h4>
 					<p><small>Posted on: <%= time_ago_in_words(post.created_at) %> ago - by: <%= post.user.username %></small></p>
 					<p>Post type: <%= post.post_type %></p>
+					
+					<% if user_signed_in? %>
 					<hr>
 					<div class="post-navigate">
 						<%= link_to 'View ', post, class: "btn btn-xs btn-success" %>
 						<%= link_to 'Edit', edit_post_path(post), class: "btn btn-xs btn-primary" %>
-						<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+						<%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
 					</div>
+					<% end %>
 				</div>
 				
 			</div>

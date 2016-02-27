@@ -1,7 +1,38 @@
 <div class="home-container">
 	<h2 class="text-center">Listing Posts</h2>
 	<hr>
-
+	<div class="search-area">
+		<form action="">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<select name="" id="" class="form-control">
+							<option value="1">Battambang</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<select name="" id="" class="form-control">
+							<option value="1">Battambang</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<select name="" id="" class="form-control">
+							<option value="1">Battambang</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<input type="submit" class="btn btn-block btn-primary">
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	<hr>
 	<div class="row">
 		<% @posts.each do |post| %>
 			<div class="col-sm-4 col-md-3">
@@ -9,20 +40,24 @@
 					<div class="img-container">
 						<%= image_tag post.image.url(:medium), class: "img-responsive" %>
 					</div>
-					<h4><%= post.title %></h4>
-					<p><small>Posted on: <%= time_ago_in_words(post.created_at) %> ago - by: <%= post.user.username %></small></p>
-					<p>Post type: <%= post.post_type %></p>
-					
-					<% if user_signed_in? %>
 					<hr>
-					<div class="post-navigate">
-						<%= link_to 'View ', post, class: "btn btn-xs btn-success" %>
-						<%= link_to 'Edit', edit_post_path(post), class: "btn btn-xs btn-primary" %>
-						<%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+					<div class="post-text">
+						<p class="post-title">
+							<% $title = truncate(post.title, length: 50) %>
+							<%= link_to $title , post %>
+						</p>
+						<div class="wrapper-text clearfix">
+							<div class="left-box">
+								<span class="label label-success"><%= post.post_type.capitalize %></span> 
+								<span class="date label label-primary"><i class="fa fa-clock-o"></i> <%= post.created_at.strftime("%b / %d") %></span> 
+								
+							</div>
+							<div class="right-box">
+								<span class="money label label-danger"><i class="fa fa-usd"></i> <%= post.price %></span>
+							</div>
+						</div>
 					</div>
-					<% end %>
 				</div>
-				
 			</div>
 		<% end %>
 	</div>

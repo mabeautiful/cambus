@@ -1,9 +1,47 @@
 <h2>Show Profile</h2>
 
-<div class="container-min user-profile">
-	<div class="profile-img">
-		<i class="fa fa-user"></i>
+<div class="container user-profile">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="profile-img">
+				<i class="fa fa-user"></i>
+				<p class="edit-profile">
+				<%= link_to "Edit profile", edit_profile_path(@profile), class: "btn btn-sm btn-info" %>
+				</p>
+			</div>
+			<p class="text-center">
+				<i class="fa fa-clock-o"></i> <em>Last active: <%= time_ago_in_words(current_user.current_sign_in_at) %> ago</em>
+			</p>
+		</div>
+		
+		<div class="col-sm-9">
+			<h4>
+				<% if @profile.first_name.present? || @profile.last_name.present? %>
+					<%= @profile.first_name.capitalize + " " + @profile.last_name.capitalize %>
+				<% else %>
+					<%= current_user.username.upcase %>
+				<% end %>
+				<span class="label label-success label-sm"><%= current_user.posts.count %> <%= (current_user.posts.count > 1) ? "posts" : "post" %></span>
+			</h4>
+			<hr>
+			<div class="profile-info">
+				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Contact Info
+					</div>
+					<div class="panel-body">
+						<ul>
+							<li><i class="fa fa-home"></i> <%= @profile.address.present? ? @profile.address : "N/A" %></li>
+							<li><i class="fa fa-phone"></i> <%= @profile.phone.present? ? @profile.phone : "N/A" %></li>
+							<li><i class="fa fa-envelope"></i> <%= @profile.email.present? ? @profile.email : "N/A" %></li>
+							
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
 	</div>
 </div>
 
-<p><%= link_to "Edit profile", edit_profile_path(@profile) %></p>

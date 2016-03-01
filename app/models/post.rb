@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
     accepts_nested_attributes_for :photos, reject_if: :all_blank, allow_destroy: true
 
     def self.search(location, post_type, keyword)
-	   where("location_id(size As Text) like ? and post_type like(size As Text) ? and title like ?",
+	   where("CAST(location_id As Text) like ? and CAST(post_type As Text) like ? and title like ?",
              "%#{location}%", "%#{post_type}%", "%#{keyword}%") 
 	end
 end

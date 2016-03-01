@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    Search Items
+  </div>
+  <div class="search-area panel-body">
+    <%= form_tag(posts_path, method: "get") do %>      
+        <div class="form-group">
+            <%= label :location, "Location" %>
+            <%= select_tag :location, content_tag(:option,'Select Location',:value=>"") + options_from_collection_for_select(Location.all, :id, :location_name, params[:location]), class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= label :post_type, "Type" %>
+         <%= select_tag :post_type, content_tag(:option,'Select Type',:value=>"") + 
+                        options_for_select([['Sale', 'sale'], ['Rent', 'rent']], params[:post_type]), 
+                        class: "form-control" %>
+        </div>    
+        <div class="form-group">
+          <%= text_field_tag :keyword, params[:keyword], class: "form-control", placeholder: "Search Posts" %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Search", class: "btn btn-info btn-block", :name => nil %>
+        </div>
+      
+        <% end %>
+  </div>
+</div>
+

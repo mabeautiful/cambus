@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:location] || params[:post_type] || params[:keyword]
+      @posts = Post.search(params[:location], params[:post_type], params[:keyword]).order("created_at DESC")
+    else
+      @posts = Post.all.order("created_at DESC")
+    end
   end
 
   # GET /posts/1

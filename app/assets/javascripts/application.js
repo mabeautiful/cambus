@@ -20,6 +20,7 @@
 //= require_tree .
 $(function(){
 	$('.bxslider').bxSlider({
+		auto: true,
 		pagerCustom: '#bx-pager'
 	});
 });

@@ -1,4 +1,8 @@
+
 <div class="home-container">
+	<div class="home-slider">
+		<%= render 'layouts/slider' %>
+	</div>
 	<h2 class="text-center">Listing Posts</h2>
 	<hr>
 	
@@ -24,7 +28,6 @@
 								<div class="left-box">
 									<span class="label label-success"><%= post.post_type.capitalize %></span> 
 									<span class="date label label-primary"><i class="fa fa-clock-o"></i> <%= post.created_at.strftime("%b / %d") %></span> 
-									
 								</div>
 								<div class="right-box">
 									<span class="money label label-danger"><i class="fa fa-usd"></i> <%= post.price %></span>

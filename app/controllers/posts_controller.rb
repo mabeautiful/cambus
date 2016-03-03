@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:location] || params[:post_type] || params[:keyword]
-      @posts = Post.search(params[:location], params[:post_type], params[:keyword]).order("created_at DESC")
+      @posts = Post.search(params[:location], params[:post_type], params[:keyword]).paginate(:page => params[:page], :per_page => 1).order("created_at DESC")
     else
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.paginate(:page => params[:page], :per_page => 5)
     end
   end
 

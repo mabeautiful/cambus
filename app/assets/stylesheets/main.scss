@@ -1,11 +1,16 @@
-$navbar-default-bg: #f55911;
+$navbar-inverse-bg: #0216c9;
 $navbar-default-link-color: #fff;
 $navbar-border-radius: 0;
 $btn-border-radius-base: 2px;
+$navbar-inverse-link-color: #fff;
+$navbar-inverse-toggle-border-color: #363f89;
+$navbar-inverse-toggle-hover-bg: #363f89;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+.container{
+	background: #ffffff;
+}
 .container-min{
     max-width: 360px;
     margin: auto;
@@ -13,8 +18,14 @@ $btn-border-radius-base: 2px;
 .container-post{
 	max-width: 640px;
 	margin: auto;
+	padding: 20px;
 }
 
+
+/* Header logo */
+.header-logo{
+	padding: 0;
+}
 /*Post index page*/
 
 .home-container{
@@ -138,7 +149,7 @@ $btn-border-radius-base: 2px;
 
 /* General */
 body{
-	background-color: #eeeeee;
+	background-color: #E1E1F6;
 }
 textarea{
 	min-height: 200px;
@@ -152,4 +163,11 @@ textarea{
 /* BX SLIDER */
 .bx-wrapper img{
 	margin: auto;
+}
+#bx-pager img{
+	width: 100px;
+	height: 65px;
+	border: 2px solid #ffffff;
+	box-shadow: 0 0 2px 1px #cccccc;
+	margin: 0 3px;
 }

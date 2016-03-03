@@ -16,7 +16,9 @@
 				<div class="col-sm-6 col-md-4">
 					<div class="post-box">
 						<div class="img-container">
-							<%= image_tag post.image.url(:medium), class: "img-responsive" %>
+							<%= link_to post do %>
+								<%= image_tag post.image.url(:medium), class: "img-responsive" %>
+							<% end %>
 						</div>
 						<hr>
 						<div class="post-text">
@@ -37,6 +39,11 @@
 					</div>
 				</div>
 			<% end %>
+			<div class="col-xs-12">
+				<div class="text-center">
+					<%= will_paginate %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

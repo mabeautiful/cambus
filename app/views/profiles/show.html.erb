@@ -1,6 +1,6 @@
 <h2>Show Profile</h2>
 
-<div class="container user-profile">
+<div class="user-profile">
 	<div class="row">
 		<div class="col-sm-3">
 			<div class="profile-img">
@@ -10,7 +10,7 @@
 				</p>
 			</div>
 			<p class="text-center">
-				<i class="fa fa-clock-o"></i> <em>Last active: <%= time_ago_in_words(current_user.current_sign_in_at) %> ago</em>
+				<i class="fa fa-clock-o"></i> <em>Last login: <%= time_ago_in_words(current_user.current_sign_in_at) %> ago</em>
 			</p>
 		</div>
 		

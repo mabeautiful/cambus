@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
     belongs_to :user
-    belongs_to :category
+    belongs_to :property_type
     belongs_to :location
     has_many :photos
     has_attached_file :image, styles: { medium: "500x320#",croppable: '560x420', thumb: "100x100>" }, default_url: "/images/:style/missing.png"

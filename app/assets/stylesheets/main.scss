@@ -10,6 +10,8 @@ $navbar-inverse-toggle-hover-bg: #363f89;
 
 .container{
 	background: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .container-min{
     max-width: 360px;
@@ -77,9 +79,11 @@ $navbar-inverse-toggle-hover-bg: #363f89;
 }
 
 /* Show post */
+
 .bx-wrapper{
 	margin: 0 auto 20px;
 }
+
 .show-description{
 	padding: 80px 0 0;
 }

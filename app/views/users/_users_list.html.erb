@@ -1,0 +1,36 @@
+<div class="table-responsive">
+	<table class="table table-bordered table-hover">
+		<tr class="info">
+			<th>ID</th>
+			<th>Username</th>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Email</th>
+			<th>Role</th>
+			<th>Action</th>
+		</tr>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= user.username.capitalize %></td>
+				<td><%= user.profile.first_name %></td>
+				<td><%= user.profile.last_name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.role.name if user.role_id.present? %></td>
+				<td class="text-center">
+					<div class="btn-group">
+						<%= link_to "#", class: "btn btn-xs btn-warning" do %>
+							<span><i class="fa fa-pencil-square-o"></i> Change role</span>
+						<% end %>
+						<%= link_to "#", class: "btn btn-xs btn-danger" do %>
+							<span><i class="fa fa-trash-o"></i> Delete user</span>
+						<% end %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+<div class="text-center">
+	<%= will_paginate %>
+</div>

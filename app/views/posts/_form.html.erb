@@ -3,7 +3,6 @@
     <% if @post.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
         <ul>
         <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -36,8 +35,8 @@
           <%=f. select :location_id, options_from_collection_for_select(Location.all, :id, :location_name, @post.location_id), {}, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :category_id, "Category" %>
-          <%=f. select :category_id, options_from_collection_for_select(Category.all, :id, :category_name, @post.category_id), {}, class: "form-control" %>
+          <%= f.label :property_type_id, "Property Type" %>
+          <%=f. select :property_type_id, options_from_collection_for_select(PropertyType.all, :id, :property_name, @post.property_type_id), {}, class: "form-control" %>
         </div>
       </div>
     </div>
@@ -58,6 +57,13 @@
       <%= f.label :description %><br>
       <%= f.text_area :description, class: "form-control" %>
     </div>
+    <div class="form-group">
+        <div class="checkbox-inline checkbox checkbox-success">
+          <%= f.check_box :enabled %>
+          <%= f.label :enabled %>
+        </div>
+        
+      </div>
     <div class="form-group">
       <%= f.submit class: "btn btn-primary" %>
     </div>

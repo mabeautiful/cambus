@@ -151,6 +151,19 @@ $navbar-inverse-toggle-hover-bg: #363f89;
 	}
 }
 
+
+/* Admin  */
+.restrict-wrapper{
+	padding: 20px 0;
+	i{
+		font-size: 10em;
+	}
+	p{
+		font-size: 2em;
+		font-weight: bold;
+	}
+}
+
 /* General */
 body{
 	background-color: #E1E1F6;

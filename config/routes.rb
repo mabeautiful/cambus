@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts
   root to: "posts#index"
+  resources :users, only: [:index]
 
   resources :profiles, only: [:show, :edit, :update]
   

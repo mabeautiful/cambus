@@ -7,12 +7,19 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= @post.property_type.property_name %></li>
     </ol>
-        <h3><%= @post.title %> </h3>
-        <div class="edit-post">
-          <%= link_to edit_post_path(@post) do %>
-            <span class="edit-post btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"></i> Edit post</span>
+        <h3><%= @post.title %></h3>
+        <% if user_signed_in? %>
+          <% if current_user.id == @post.user_id || current_user.role_id == 4 %>
+            <div class="edit-post">
+              <%= link_to edit_post_path(@post) do %>
+                <span class="edit-post btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"></i> Edit post</span>
+              <% end %>
+              <%= link_to @post, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" do %>
+                <i class="fa fa-times"></i> Delete
+              <% end %>
+            </div>
           <% end %>
-        </div>
+        <% end %>
     <hr>
     <p>
       <strong>Contract:</strong>

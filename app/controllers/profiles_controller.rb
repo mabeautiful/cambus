@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
+	before_action :authenticate_user!
 	before_action :find_profile
+	
 	def show
-
 	end
 	def edit
 

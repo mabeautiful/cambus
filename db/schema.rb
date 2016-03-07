@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226075424) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string   "category_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
+ActiveRecord::Schema.define(version: 20160307060610) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "location_name"
@@ -41,16 +35,17 @@ ActiveRecord::Schema.define(version: 20160226075424) do
     t.string   "title"
     t.string   "post_type"
     t.text     "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.float    "price"
-    t.integer  "category_id"
+    t.integer  "property_type_id"
     t.integer  "location_id"
+    t.boolean  "enabled"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -60,6 +55,18 @@ ActiveRecord::Schema.define(version: 20160226075424) do
     t.string  "email"
     t.text    "address"
     t.integer "user_id"
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string   "property_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,10 +83,12 @@ ActiveRecord::Schema.define(version: 20160226075424) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

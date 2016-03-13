@@ -1,5 +1,7 @@
-<div class="container-fluid header-logo">
-  <%= image_tag "logo.jpg", class: "img-responsive" %>
+<header class="container-fluid">
+  <div class="header-logo">
+    <%= image_tag "logo.png" %>
+  </div>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,7 +37,7 @@
                 <i class="fa fa-plus-circle"></i> Add post
               <% end %>
             </li>
-            <li><%= link_to current_user.username.capitalize, profile_path(current_user.profile.id) if current_user.profile.present? %></li>
+            <li><%= link_to current_user.username.capitalize, profile_path(current_user.id) if current_user.present? %></li>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
           <% else %>
             <li><%= link_to('Sign Up', new_user_registration_path)  %>  </li>
@@ -45,4 +47,4 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-</div>
+</header>

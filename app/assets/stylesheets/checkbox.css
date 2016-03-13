@@ -1,5 +1,9 @@
+
 .checkbox {
   padding-left: 0;
+}
+.checkbox-list .checkbox{
+  padding-left: 20px;
 }
 .checkbox label {
   display: inline-block;

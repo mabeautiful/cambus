@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if params[:location] || params[:post_type] || params[:keyword]
       @posts = Post.search(params[:location], params[:post_type], params[:keyword]).paginate(:page => params[:page], :per_page => 1).order("created_at DESC")
     else
-      @posts = Post.where(:enabled => 1).paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.where(:enabled => true).paginate(:page => params[:page], :per_page => 5)
     end
   end
 
@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @image = @post.image.present?
+    @posts = Post.all.limit(3).order("created_at DESC")
   end
 
   # GET /posts/new
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+
   end
 
   # POST /posts

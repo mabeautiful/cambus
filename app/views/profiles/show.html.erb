@@ -1,5 +1,9 @@
 <h2>Show Profile</h2>
-
+<p>
+	user Id <%= @user_profile.first_name %>
+<br>
+	username <%= @the_user.username %>
+</p>
 <div class="user-profile">
 	<div class="row">
 		<div class="col-sm-3">
@@ -26,12 +30,12 @@
 		
 		<div class="col-sm-9">
 			<h4>
-				<% if @profile.first_name.present? || @profile.last_name.present? %>
-					<%= @profile.first_name.capitalize + " " + @profile.last_name.capitalize %>
+				<% if @user_profile.first_name.present? || @user_profile.last_name.present? %>
+					<%= @user_profile.first_name.capitalize + " " + @user_profile.last_name.capitalize %>
 				<% else %>
-					<%= current_user.username.upcase %>
+					<%= @the_user.username.upcase %>
 				<% end %>
-				<span class="label label-success label-sm"><%= current_user.posts.count %> <%= (current_user.posts.count > 1) ? "posts" : "post" %></span>
+				<span class="label label-success label-sm"><%= @user_profile.user.posts.count %> <%= (@user_profile.user.posts.count > 1) ? "posts" : "post" %></span>
 			</h4>
 			<hr>
 			<div class="profile-info">
@@ -41,9 +45,9 @@
 					</div>
 					<div class="panel-body">
 						<ul>
-							<li><i class="fa fa-home"></i> <%= @profile.address.present? ? @profile.address : "N/A" %></li>
-							<li><i class="fa fa-phone"></i> <%= @profile.phone.present? ? @profile.phone : "N/A" %></li>
-							<li><i class="fa fa-envelope"></i> <%= @profile.email.present? ? @profile.email : "N/A" %></li>
+							<li><i class="fa fa-home"></i> <%= @user_profile.address.present? ? @user_profile.address : "N/A" %></li>
+							<li><i class="fa fa-phone"></i> <%= @user_profile.phone.present? ? @user_profile.phone : "N/A" %></li>
+							<li><i class="fa fa-envelope"></i> <%= @user_profile.email.present? ? @user_profile.email : "N/A" %></li>
 							
 						</ul>
 					</div>

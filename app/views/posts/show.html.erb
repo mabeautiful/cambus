@@ -11,11 +11,11 @@
         <% if user_signed_in? %>
           <% if current_user.id == @post.user_id || current_user.role_id == 4 %>
             <div class="edit-post">
-              <%= link_to edit_post_path(@post) do %>
-                <span class="edit-post btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"></i> Edit post</span>
+              <%= link_to edit_post_path(@post), class: "edit-post btn btn-primary btn-xs" do %>
+                <span><i class="fa fa-pencil-square-o"></i> Edit post</span>
               <% end %>
-              <%= link_to @post, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" do %>
-                <i class="fa fa-times"></i> Delete
+              <%= link_to @post, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" do %>
+                <i class="fa fa-lg fa-times-circle-o"></i> Delete
               <% end %>
             </div>
           <% end %>
@@ -27,7 +27,7 @@
       | Posted on <%= @post.created_at.strftime("%d-%m-%Y") %>
     </p>
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-8">
         <ul class="bxslider">
           <% @post.photos.each do |photo| %>
             <li>
@@ -46,8 +46,7 @@
             end
           %>  
         </div>
-      </div>
-      <div class="user-detail col-md-5">
+
         <div class="profile-info">
           <div class="panel panel-primary">
             <div class="panel-heading">
@@ -63,17 +62,42 @@
             </div>
           </div>  
         </div>
+        
+        <p><strong>Description</strong></p>
+        <p>
+          <%= @post.description %>
+        </p>
+      </div>
+      <div class="recent-post col-md-4">
+        <h3>Most Recent Posts</h3>
+        <hr>
+        <% @posts.each do |recent_post| %>
+          <div class="post-box">
+            <div class="img-container">
+              <%= link_to recent_post do %>
+                <%= image_tag recent_post.image.url(:medium), class: "img-responsive" %>
+              <% end %>
+            </div>
+            <hr>
+            <div class="post-text">
+              <p class="post-title">
+                <% $title = truncate(recent_post.title, length: 50) %>
+                <%= link_to $title , recent_post %>
+              </p>
+              <div class="wrapper-text clearfix">
+                <div class="left-box">
+                  <span class="label label-success"><%= recent_post.post_type.capitalize %></span> 
+                  <span class="date label label-primary"><i class="fa fa-clock-o"></i> <%= recent_post.created_at.strftime("%b / %d") %></span> 
+                </div>
+                <div class="right-box">
+                  <span class="money label label-danger"><i class="fa fa-usd"></i> <%= recent_post.price %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
     
-    <p><strong>Description</strong></p>
-    <p>
-      <%= @post.description %>
-    </p>
-    <%= link_to 'Edit', edit_post_path(@post) %>
-  </div>
-  <div class="col-md-6 show-description">
-    
-
   </div>
 </div>

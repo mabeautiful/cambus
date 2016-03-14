@@ -11,12 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307060610) do
+ActiveRecord::Schema.define(version: 20160314072036) do
+
+  create_table "amentities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "areas", force: :cascade do |t|
+    t.integer "city_id"
+    t.string  "name"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "locations", force: :cascade do |t|
-    t.string   "location_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "Address"
+    t.integer  "zipcode"
+    t.integer  "area_id"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -46,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160307060610) do
     t.integer  "property_type_id"
     t.integer  "location_id"
     t.boolean  "enabled"
+    t.string   "amentity_ids",       default: "--- []\n"
   end
 
   create_table "profiles", force: :cascade do |t|

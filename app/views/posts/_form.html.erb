@@ -21,19 +21,9 @@
         <%= f.label :post_type, "Type" %>
          <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :price %>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">$</span>
-            <%= f.text_field :price, class: "form-control" %>
-          </div>
-        </div>
+        
       </div>
       <div class="col-sm-6">
-        <div class="form-group">
-          <%= f.label :location_id, "Location" %>
-          <%=f. select :location_id, options_from_collection_for_select(Location.all, :id, :location_name, @post.location_id), {}, class: "form-control" %>
-        </div>
         <div class="form-group">
           <%= f.label :property_type_id, "Property Type" %>
           <%=f. select :property_type_id, options_from_collection_for_select(PropertyType.all, :id, :property_name, @post.property_type_id), {}, class: "form-control" %>
@@ -50,19 +40,7 @@
           <%=f. select :location_id, options_from_collection_for_select(Location.all, :id, :location_name, @post.location_id), {}, class: "form-control" %>
         </div>
       </div>
-      <div class="col-xs-6">
-        <div class="form-group">
-          <%= f.label :post_type, "District/Area" %>
-           <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="col-xs-6">
-        <div class="form-group">
-          <%= f.label :post_type, "Zip code" %>
-           <input type="text" class="form-control">
-        </div>
-      </div>
+      
       <div class="col-xs-6">
         <div class="form-group">
           <%= f.label :post_type, "Street No" %>
@@ -78,82 +56,25 @@
     <div class="row form-group">
       <h4 class="text-center">Amentities</h4>
       <hr>
-      <div class="col-md-4 col-xs-6 checkbox-list">
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Airconditioner</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">TV</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Full furniture</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Internet Services</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Fireplace for Safety</label>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-xs-6 checkbox-list">
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Balcony</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Garden</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Gym</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Lift</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Swimming pool</label>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-xs-6 checkbox-list">
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Kitchen</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Parking</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Security Guard</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Hot water</label>
-        </div>
-        <div class="checkbox checkbox-primary">
-          <input type="checkbox">
-          <label for="">Washing</label>
-        </div>
-      </div>
+        <%= f.collection_check_boxes :amentity_ids, Amentity.all, :id, :name, checked: @int_amentities do |cb| %>
+          <div class="col-md-4 col-xs-6 checkbox-list">
+            <div class="checkbox checkbox-primary">
+              <%= cb.check_box %>
+              <%= cb.label %>
+            </div>
+          </div>
+        <% end %>
     </div>
     <div class="row">
       <h4 class="text-center">Details</h4>
       <hr>
       <div class="col-xs-6">
         <div class="form-group">
-          <%= f.label :post_type, "Type" %>
-           <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
+          <%= f.label :price %>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">$</span>
+            <%= f.text_field :price, class: "form-control" %>
+          </div>
         </div>
       </div>
       <div class="col-xs-6">

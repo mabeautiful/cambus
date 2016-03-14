@@ -26,26 +26,29 @@
       <%= @post.post_type %>
       | Posted on <%= @post.created_at.strftime("%d-%m-%Y") %>
     </p>
-    <div class="row">
+    <div class="row show-post-wrapper">
       <div class="col-md-8">
-        <ul class="bxslider">
-          <% @post.photos.each do |photo| %>
-            <li>
-              <%= image_tag photo.image.url %>
-            </li>
-          <% end %>
-        </ul>
-        <div id="bx-pager">
-          <% 
-            $i = 0;
-            @post.photos.each do |thumb|
-          %>
-            <a data-slide-index="<%= $i %>" href=""><%= image_tag thumb.image.url(:thumb) %></a>
-          <%
-                $i +=1
-            end
-          %>  
+        <div class="post-show-slider">
+          <ul class="bxslider">
+            <% @post.photos.each do |photo| %>
+              <li>
+                <%= image_tag photo.image.url %>
+              </li>
+            <% end %>
+          </ul>
+          <div id="bx-pager">
+            <% 
+              $i = 0;
+              @post.photos.each do |thumb|
+            %>
+              <a data-slide-index="<%= $i %>" href=""><%= image_tag thumb.image.url(:thumb) %></a>
+            <%
+                  $i +=1
+              end
+            %>  
+          </div>
         </div>
+        
 
         <div class="profile-info">
           <div class="panel panel-primary">
@@ -62,11 +65,29 @@
             </div>
           </div>  
         </div>
-        
-        <p><strong>Description</strong></p>
-        <p>
-          <%= @post.description %>
-        </p>
+        <div class="post-show-amentity">
+          <h3>Property amentites</h3>
+          <hr>
+          <ul class="row">
+            <% @amentities.each do |str_amenity| %>
+              <% amentity = str_amenity.to_i %>
+              <% if amentity > 0 %>
+                <li class="col-xs-6">
+                  <i class="fa fa-check"></i>
+                  <%= Amentity.find(amentity).name %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="post-show-detail">
+          <h3>Porperty Details</h3>
+          <hr>
+          <p>Price: <span class="btn btn-xs btn-danger">$ <%= @post.price %></span></p>
+          <p>
+            <%= @post.description %>
+          </p>
+        </div>
       </div>
       <div class="recent-post col-md-4">
         <h3>Most Recent Posts</h3>

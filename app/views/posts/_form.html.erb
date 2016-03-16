@@ -37,19 +37,19 @@
       <div class="col-xs-6">
         <div class="form-group">
           <%= f.label :location_id, "Province/City" %>
-          <%=f. select :location_id, options_from_collection_for_select(Location.all, :id, :location_name, @post.location_id), {}, class: "form-control" %>
+          <%=f. select :location_id, options_from_collection_for_select(Location.all, :id, :name, @post.location_id), {}, class: "form-control" %>
         </div>
       </div>
       
       <div class="col-xs-6">
         <div class="form-group">
-          <%= f.label :post_type, "Street No" %>
-           <input type="text" class="form-control">
+          <%= f.label :area, "Area" %>
+           <%= f.text_field :area, class: "form-control" %>
         </div>
       </div>
       <div class="col-xs-12 form-group">
-        <%= f.label :title, "Address" %><br>
-        <%= f.text_field :title, class: "form-control" %>
+        <%= f.label :address, "Address" %><br>
+        <%= f.text_field :address, class: "form-control" %>
       </div>
     </div>
 
@@ -70,29 +70,35 @@
       <hr>
       <div class="col-xs-6">
         <div class="form-group">
+          <%= f.label :post_type, "Bedrooms" %>
+           <%= f.select :bedroom, options_for_select((1..10), @post.bedroom), {include_blank: true}, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :post_type, "Bathrooms" %>
+           <%= f.select :bathroom, options_for_select((1..10), @post.bathroom), {include_blank: true}, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :floor, "Floors" %>
+           <%= f.select :floor, options_for_select((1..10), @post.floor), {include_blank: true}, class: "form-control" %>
+        </div>
+      </div>
+       <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :size, "Area size" %>
+           <%= f.text_field :size, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
           <%= f.label :price %>
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">$</span>
             <%= f.text_field :price, class: "form-control" %>
           </div>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="form-group">
-          <%= f.label :post_type, "Type" %>
-           <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="form-group">
-          <%= f.label :post_type, "Type" %>
-           <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="form-group">
-          <%= f.label :post_type, "Type" %>
-           <%= f.select :post_type, options_for_select([['Sale', 'sale'], ['Rent', 'rent']], @post.post_type), {}, class: "form-control" %>
         </div>
       </div>
     </div>

@@ -10,32 +10,36 @@
 			<%= render 'search' %>
 		</div>
 		<div class="col-md-9">
-			<% @posts.each do |post| %>
-				<div class="col-sm-6 col-md-4">
-					<div class="post-box">
-						<div class="img-container">
-							<%= link_to post do %>
-								<%= image_tag post.image.url(:medium), class: "img-responsive" %>
-							<% end %>
-						</div>
-						<hr>
-						<div class="post-text">
-							<p class="post-title">
-								<% $title = truncate(post.title, length: 50) %>
-								<%= link_to $title , post %>
-							</p>
-							<div class="wrapper-text clearfix">
-								<div class="left-box">
-									<span class="label label-success"><%= post.post_type.capitalize %></span> 
-									<span class="date label label-primary"><i class="fa fa-clock-o"></i> <%= post.created_at.strftime("%b / %d") %></span> 
-								</div>
-								<div class="right-box">
-									<span class="money label label-danger"><i class="fa fa-usd"></i> <%= post.price %></span>
+			<% if @posts.count > 0 %>
+				<% @posts.each do |post| %>
+					<div class="col-sm-6 col-md-4">
+						<div class="post-box">
+							<div class="img-container">
+								<%= link_to post do %>
+									<%= image_tag post.image.url(:medium), class: "img-responsive" %>
+								<% end %>
+							</div>
+							<hr>
+							<div class="post-text">
+								<p class="post-title">
+									<% $title = truncate(post.title, length: 50) %>
+									<%= link_to $title , post %>
+								</p>
+								<div class="wrapper-text clearfix">
+									<div class="left-box">
+										<span class="label label-success"><%= post.post_type.capitalize %></span> 
+										<span class="date label label-primary"><i class="fa fa-clock-o"></i> <%= post.created_at.strftime("%b / %d") %></span> 
+									</div>
+									<div class="right-box">
+										<span class="money label label-danger"><i class="fa fa-usd"></i> <%= post.price %></span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
+			<% else %>
+				<p class="alert alert-warning">There is no post to show.</p>
 			<% end %>
 			<div class="col-xs-12">
 				<div class="text-center">

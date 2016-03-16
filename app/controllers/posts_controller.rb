@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if params[:location] || params[:post_type] || params[:keyword]
       @posts = Post.search(params[:location], params[:post_type], params[:keyword]).paginate(:page => params[:page], :per_page => 1).order("created_at DESC")
     else
-      @posts = Post.where(:enabled => true).paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.where(:enabled => true).paginate(:page => params[:page], :per_page => 5).order("created_at DESC")
     end
   end
 
@@ -83,6 +83,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :post_type,:image, :description, :price,:enabled, :property_type_id, :location_id, :amentity_ids => [], photos_attributes: [:id, :image,  :_destroy])
+      params.require(:post).permit(:title, :post_type,:image, :size, :bathroom, :bedroom, :floor, :area, :address, :description, :price,:enabled, :property_type_id, :location_id, :amentity_ids => [], photos_attributes: [:id, :image,  :_destroy])
     end
 end

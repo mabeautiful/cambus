@@ -6,6 +6,7 @@
     <ol class="breadcrumb">
       <li><%= link_to "Home", root_path %></li>
       <li><%= @post.property_type.property_name %></li>
+      <li><%= @post.title %></li>
     </ol>
         <h3><%= @post.title %></h3>
         <% if user_signed_in? %>
@@ -84,6 +85,19 @@
           <h3>Porperty Details</h3>
           <hr>
           <p>Price: <span class="btn btn-xs btn-danger">$ <%= @post.price %></span></p>
+          <p>Address: <%= @post.address + " " + @post.area + ", " + @post.location.name %></p>
+          <p>
+            <% if @post.bedroom.present? %>
+            <i class="fa fa-bed"></i> 
+            <%= "Bedroom: " + @post.bedroom.to_s %>
+            <% end %>
+            <% if @post.bathroom.present? %>
+            <%= "Bathroom: " + @post.bathroom.to_s %>
+            <% end %>
+            <% if @post.floor.present? %>
+            <%= "Floor: " + @post.floor.to_s %>
+            <% end %>
+          </p>
           <p>
             <%= @post.description %>
           </p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314072036) do
+ActiveRecord::Schema.define(version: 20160315021657) do
 
   create_table "amentities", force: :cascade do |t|
     t.string   "name"
@@ -19,20 +19,8 @@ ActiveRecord::Schema.define(version: 20160314072036) do
     t.datetime "updated_at"
   end
 
-  create_table "areas", force: :cascade do |t|
-    t.integer "city_id"
-    t.string  "name"
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "locations", force: :cascade do |t|
-    t.string   "Address"
-    t.integer  "zipcode"
-    t.integer  "area_id"
-    t.integer  "location_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,6 +53,12 @@ ActiveRecord::Schema.define(version: 20160314072036) do
     t.integer  "location_id"
     t.boolean  "enabled"
     t.string   "amentity_ids",       default: "--- []\n"
+    t.string   "area"
+    t.string   "address"
+    t.integer  "bedroom"
+    t.integer  "bathroom"
+    t.integer  "floor"
+    t.string   "size"
   end
 
   create_table "profiles", force: :cascade do |t|

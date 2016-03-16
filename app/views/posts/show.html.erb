@@ -50,7 +50,6 @@
           </div>
         </div>
         
-
         <div class="profile-info">
           <div class="panel panel-primary">
             <div class="panel-heading">
@@ -70,15 +69,7 @@
           <h3>Property amentites</h3>
           <hr>
           <ul class="row">
-            <% @amentities.each do |str_amenity| %>
-              <% amentity = str_amenity.to_i %>
-              <% if amentity > 0 %>
-                <li class="col-xs-6">
-                  <i class="fa fa-check"></i>
-                  <%= Amentity.find(amentity).name %>
-                </li>
-              <% end %>
-            <% end %>
+           <%= @post.amentity_ids %>
           </ul>
         </div>
         <div class="post-show-detail">

@@ -69,7 +69,9 @@
           <h3>Property amentites</h3>
           <hr>
           <ul class="row">
-           <%= @post.amentity_ids %>
+           <% @get_amentities.each do |amentity| %>
+            <%= amentity %>
+          <% end %>
           </ul>
         </div>
         <div class="post-show-detail">

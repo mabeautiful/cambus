@@ -16,8 +16,8 @@ class PostsController < ApplicationController
   def show
     @image = @post.image.present?
     @posts = Post.all.limit(3).order("created_at DESC")
-    # @get_amentities = @post.amentity_ids 
-    # @amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
+    @get_amentities = @post.amentity_ids 
+    #@amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
     # @amentities = @amentity_to_array.split(/,/)
   end
 

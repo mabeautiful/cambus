@@ -5,7 +5,7 @@
   <div class="col-md-9">
     <ol class="breadcrumb">
       <li><%= link_to "Home", root_path %></li>
-      <li><%= @post.property_type.property_name %></li>
+      <li><%= link_to @post.property_type.property_name, property_type_path(@post.property_type.id) %></li>
       <li><%= @post.title %></li>
     </ol>
         <h3><%= @post.title %></h3>
@@ -69,7 +69,7 @@
           <h3>Property amentites</h3>
           <hr>
           <ul class="row">
-           <% @get_amentities.each do |str_amentity| %>
+           <% @amentities.each do |str_amentity| %>
             <% amentity = str_amentity.to_i %>
             <% if amentity > 0 %>
               <li class="col-xs-6">

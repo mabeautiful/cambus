@@ -25,10 +25,32 @@
             <ul class="dropdown-menu">
               <% @location = Location.all %>
               <% @location.each do |location| %>
-              <li><a href="#"><%= location.name %></a></li>
+              <li><%= link_to location.name, location_path(location) %></li>
               <% end %>
             </ul>
           </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Property Type <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% @location = PropertyType.all %>
+              <% @location.each do |property| %>
+              <li><%= link_to property.property_name, property_type_path(property) %></li>
+              <% end %>
+            </ul>
+          </li>
+
+          <% if user_signed_in? && current_user.role_id == 4 %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View all <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "locations", locations_path %></li>
+                <li><%= link_to "users", users_path %></li>
+                <li><%= link_to "property types", property_types_path %></li>
+              </ul>
+            </li>
+          <% end %>
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>

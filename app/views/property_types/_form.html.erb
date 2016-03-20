@@ -1,0 +1,14 @@
+<div class="container-min">
+	<%= form_for(@property) do |f| %>
+		<div class="input-group">
+			<%= f.text_field :property_name, class: "form-control", placeholder: "Property type name" %>
+			<div class="input-group-btn">
+				<% if @property.new_record? %>
+					<%= f.submit "Add property", class: "btn btn-success" %>
+				<% else %>
+					<%= f.submit "Update", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

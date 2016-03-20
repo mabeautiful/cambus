@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  rescue_from ActionController::RoutingError, :with => :render_404
+    # Render 404 page when record not found
+  def render_404      
+     render 'users/restrict_access', :status => 404
+  end
 end

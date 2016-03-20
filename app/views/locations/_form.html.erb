@@ -1,0 +1,20 @@
+<div class="container-min">
+	<%= form_for(@location) do |f| %>
+		<div class="form-group">
+			<%= f.label :name %>
+			<div class="input-group">
+				<%= f.text_field :name, class: "form-control", autofocus: true %>
+				<div class="input-group-btn">
+					<% if @location.new_record? %>
+						<%= f.submit "Add location", class: "btn btn-default" %>
+					<% else %>
+						<%= f.submit "Update", class: "btn btn-default" %>
+					<% end %>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	<% end %>
+</div>

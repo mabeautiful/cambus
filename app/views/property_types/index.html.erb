@@ -1,0 +1,20 @@
+<h2>Property types list</h2>
+<div class="container-min table-responsive">
+	<table class="table table-bordered">
+		<tr>
+			<th>Property name</th>
+			<th colspan="2">Actions</th>
+		</tr>
+		<% @properties.each do |property| %>
+		<tr>
+			<td><%= property.property_name %></td>
+			<td><%= link_to "Edit", edit_property_type_path(property) %></td> 
+			<td><%= link_to "Delete", property, method: :delete, data: {confirm: "Are you sure?"} %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+<div class="container-min">
+	<%= link_to "Add property type", new_property_type_path %>
+</div>
+

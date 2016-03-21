@@ -17,10 +17,15 @@ class PostsController < ApplicationController
     @image = @post.image.present?
     @posts = Post.all.limit(3).order("created_at DESC")
     @get_amentities = @post.amentity_ids 
-    @post_amentities = @get_amentities
+
     # For development
-    #@amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
-    #@amentities = @amentity_to_array.split(/,/)
+    if Rails.env.development?
+      @amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
+      @amentities = @amentity_to_array.split(/,/)
+      @post_amentities = @amentities
+    else
+      @post_amentities = @get_amentities
+    end
   end
 
   # GET /posts/new
@@ -32,9 +37,13 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @get_amentities = @post.amentity_ids 
-    @amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
-    @amentities = @amentity_to_array.split(/,/)
-    @int_amentities = @amentities.map(&:to_i)
+    if Rails.env.development?
+      @amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
+      @amentities = @amentity_to_array.split(/,/)
+      @int_amentities = @amentities.map(&:to_i)
+    else
+      @int_amentities = @get_amentities
+    end
   end
 
   # POST /posts

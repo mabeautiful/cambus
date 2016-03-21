@@ -19,7 +19,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'image_magick', '~> 0.1.9'
-gem 'rmagick'
 gem "paperclip", "~> 4.3"
 gem "cocoon"
 gem 'jquery-turbolinks'

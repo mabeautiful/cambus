@@ -17,10 +17,10 @@ class PostsController < ApplicationController
     @image = @post.image.present?
     @posts = Post.all.limit(3).order("created_at DESC")
     @get_amentities = @post.amentity_ids 
-
+    @post_amentities = @get_amentities
     # For development
-      @post_amentities = @get_amentities
-
+    #@amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
+    #@amentities = @amentity_to_array.split(/,/)
   end
 
   # GET /posts/new

@@ -19,8 +19,14 @@ class PostsController < ApplicationController
     @get_amentities = @post.amentity_ids 
 
     # For development
-    @amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
-    @amentities = @amentity_to_array.split(/,/)
+    if Rails.env.development?
+      @amentity_to_array = @get_amentities.gsub!(/[\[\]\"]/, "")
+      @amentities = @amentity_to_array.split(/,/)
+      @post_amentities = @amentities
+    else
+      @post_amentities = @get_amentities
+    end
+
   end
 
   # GET /posts/new

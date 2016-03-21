@@ -22,6 +22,7 @@ gem 'image_magick', '~> 0.1.9'
 gem "paperclip", "~> 4.3"
 gem "cocoon"
 gem 'jquery-turbolinks'
+gem 'aws-sdk'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
